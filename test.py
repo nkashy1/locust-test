@@ -2,4 +2,4 @@ def doubler(a):
     return a + a
 
 def identity(a):
-    return f(a) - a
+    return a

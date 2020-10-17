@@ -6,9 +6,14 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout git repo
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: simiotics/locust-action@v1
+      - name: Generate Locust summary
+        uses: simiotics/locust-action@v1
+        id: locust
         with:
           format: yaml
+      - name: Print Locust summary from output
+        run: echo ${{ steps.locust.outputs.summary }}
