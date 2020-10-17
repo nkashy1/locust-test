@@ -16,4 +16,4 @@ jobs:
         with:
           format: yaml
       - name: Print Locust summary from output
-        run: echo ${{ steps.locust.outputs.summary }}
+        run: echo "${{ steps.locust.outputs.summary }}"
