@@ -1,5 +1,5 @@
-def f(a):
+def doubler(a):
     return a + a
 
-def g(a):
+def identity(a):
     return f(a) - a
