@@ -1,6 +1,6 @@
-name: Lint Spire
+name: Locust summary for locust-test
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -9,4 +9,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: simiotics/locust-action@setup
+      - uses: simiotics/locust-action@v1
+        with:
+          format: yaml
