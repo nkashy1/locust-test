@@ -1,6 +1,6 @@
 name: Locust summary for locust-test
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -14,6 +14,14 @@ jobs:
         uses: simiotics/locust-action@summary-output
         id: locust
         with:
-          format: yaml
-      - name: Print Locust summary from output
-        run: echo "${{ steps.locust.outputs.summary }}"
+          format: html-github
+      - name: Comment on PR
+        uses: actions/github-script@v3
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${{ steps.locust.outputs.summary }}',
+            })
