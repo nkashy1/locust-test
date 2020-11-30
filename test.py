@@ -1,5 +1,5 @@
 def doubler(a):
-    return a + a
+    return a + a + a
 
 def tripler(a):
     return a + a + a
